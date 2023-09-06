@@ -24,10 +24,16 @@ final GoRouter _router = GoRouter(
           path: 'sheet',
           pageBuilder: (BuildContext context, GoRouterState state) {
             return CupertinoModalPopupPage(
-                builder: (_) => const CupertinoActionSheet(
-                      title: Text("Dummy Title"),
-                      message: FlutterLogo(),
-                    ));
+              ///The builder can return any widget we want, so we have full control over
+              ///the height and shape
+                builder: (_) => Container(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  color: Colors.white,
+                  child: const CupertinoActionSheet(
+                        title: Text("Dummy Title"),
+                        message: FlutterLogo(),
+                      ),
+                ));
           },
         ),
         GoRoute(
@@ -185,9 +191,9 @@ class BottomSheetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///The size of the container is fixed
     return Container(
       color: Colors.yellow,
-      height: MediaQuery.of(context).size.height * 0.6,
       child: Center(
         child: ElevatedButton(
           child: const Text('Go Back'),
